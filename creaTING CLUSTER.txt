@@ -1,0 +1,15 @@
+  export KOPS_STATE_STORE="s3://k8s5.test.com"
+  export MASTER_SIZE="t2.micro"
+  export NODE_SIZE="t2.micro"
+  export ZONES="us-east-2a"
+  kops create cluster k8s.test.com \
+  --node-count 3 \
+  --zones $ZONES \
+  --node-size $NODE_SIZE \
+  --master-size $MASTER_SIZE \
+  --master-zones $ZONES \
+  --networking cilium \
+  --topology private \
+  --cloud aws\
+  --dns private
+  --yes
